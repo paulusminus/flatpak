@@ -1,0 +1,2 @@
+# Lipl Control flatpak
+
