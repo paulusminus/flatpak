@@ -12,7 +12,7 @@ METADATA_DIR=/app/share/metainfo
 
 # Copy binaries
 mkdir -p $PROJECT_NAME
-tar -xzf lipl-linux-x64.tar.gz -C $PROJECT_NAME
+cp -r lipl-control/* $PROJECT_NAME
 
 # Make link to binary that is to be executed
 cp -r $PROJECT_NAME /app/

@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
-    Generator for metainfo & .desktop files: 
-    https://www.freedesktop.org/software/appstream/metainfocreator/#/
--->
 <component type="desktop-application">
   <id>nl.paulmin.LiplControl</id>
   <name>Lipl Control</name>

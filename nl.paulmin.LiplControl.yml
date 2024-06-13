@@ -11,8 +11,10 @@ modules:
     sources:
       - type: file
         path: install.sh
-      - type: file
-        path: lipl-linux-x64.tar.gz
+      - type: archive
+        url: https://github.com/paulusminus/lipl-control/releases/download/v1.12.7/lipl-linux-x64.tar.gz
+        sha256: 6189f2e07ec9059fd3dbb231cda8ed7b59edfa702b8e727d62d22155b5250b47
+        dest: lipl-control
       - type: file
         path: nl.paulmin.LiplControl.svg
       - type: file
@@ -30,4 +32,4 @@ finish-args:
   # Needs to talk to the network:
   - --share=network
   # Needs to save files locally
-  - --filesystem=xdg-data
+  # - --filesystem=xdg-data
