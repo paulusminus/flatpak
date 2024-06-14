@@ -6,30 +6,24 @@ command: lipl_control
 modules:
   - name: lipl_control
     buildsystem: simple
-    build-commands: 
-      - "./install.sh"
+    build-commands:
+      - mkdir -p /app/lipl_control
+      - cp -R release/{data,lib,lipl_control} /app/lipl_control/
+      - chmod +x /app/lipl_control/lipl_control
+      - mkdir -p /app/bin/
+      - mkdir -p /app/lib/
+      - ln -s /app/lipl_control/lipl_control /app/bin/lipl_control
+      - install -Dm644 release/nl.paulmin.LiplControl.svg /app/share/icons/hicolor/scalable/apps/nl.paulmin.LiplControl.svg
+      - install -Dm644 release/nl.paulmin.LiplControl.desktop /app/share/applications/nl.paulmin.LiplControl.desktop
+      - install -Dm644 release/nl.paulmin.LiplControl.metainfo.xml /app/share/metainfo/nl.paulmin.LiplControl.metainfo.xml
     sources:
-      - type: file
-        path: install.sh
       - type: archive
         url: https://github.com/paulusminus/lipl-control/releases/download/v1.12.7/lipl-linux-x64.tar.gz
-        sha256: 6189f2e07ec9059fd3dbb231cda8ed7b59edfa702b8e727d62d22155b5250b47
-        dest: lipl-control
-      - type: file
-        path: nl.paulmin.LiplControl.svg
-      - type: file
-        path: nl.paulmin.LiplControl.metainfo.xml
-      - type: file
-        path: nl.paulmin.LiplControl.desktop
+        sha256: eeea1e62b71d3be6b34fcc7db9d213c5826a2c719659e63decdb397c0abb916b
+        dest: release
 finish-args:
-  # X11 + XShm access
   - --share=ipc
   - --socket=fallback-x11
-  # Wayland access
   - --socket=wayland
-  # GPU acceleration if needed
   - --device=dri
-  # Needs to talk to the network:
   - --share=network
-  # Needs to save files locally
-  # - --filesystem=xdg-data
