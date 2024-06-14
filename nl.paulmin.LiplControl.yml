@@ -18,6 +18,8 @@ modules:
       - install -Dm644 release/nl.paulmin.LiplControl.metainfo.xml /app/share/metainfo/nl.paulmin.LiplControl.metainfo.xml
     sources:
       - type: archive
+        only-arches: 
+          - x86_64
         url: https://github.com/paulusminus/lipl-control/releases/download/v1.12.7/lipl-linux-x64.tar.gz
         sha256: eeea1e62b71d3be6b34fcc7db9d213c5826a2c719659e63decdb397c0abb916b
         dest: release
