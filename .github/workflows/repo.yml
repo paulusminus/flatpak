@@ -7,14 +7,33 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    container:
+      image: ghcr.io/andyholmes/flatter/freedesktop:23.08
+      options: --privileged
+    permissions:
+      pages: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
+      - name: Setup GPG
+        id: gpg
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.GPG_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+      - name: Build
+        id: flatpak
+        uses: andyholmes/flatter@main
+        with:
+          files: |
+            nl.paulmin.lipl.Control.yml
+          arch: x86_64
+          gpg-sign: ${{ steps.gpg.outputs.fingerprint }}
+          upload-bundles: true
+          upload-pages-artifact: true
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v4
+        with:
+          folder: ${{ steps.flatpak.outputs.repository }}
+          target-folder: repo
 
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
