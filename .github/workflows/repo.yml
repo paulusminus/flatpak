@@ -2,11 +2,7 @@ name: Publish flatpak repository
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-  workflow_dispatch:
+    tags: "v*.*.*"
 
 jobs:
   build:
