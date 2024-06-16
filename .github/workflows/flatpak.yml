@@ -16,9 +16,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
         with:
-            bundle: lipl-control.flatpak
+            bundle: lipl-control-x64.flatpak
             manifest-path: nl.paulmin.lipl.Control.yml
             cache-key: flatpak-builder-${{ github.sha }}
+      - name: Calculate checksum
+        run: sha256sum lipl-control-x64.flatpak > lipl-control-x64.flatpak.sig.txt
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "lipl-control.flatpak"
+          artifacts: "lipl-control-x64.flatpak,lipl-control-x64.flatpak.sig.txt"
