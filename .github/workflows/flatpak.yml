@@ -14,11 +14,16 @@ jobs:
       options: --privileged
     steps:
       - uses: actions/checkout@v4
+      - uses: crazy-max/ghaction-import-gpg@v1
+        env:
+         GPG_PRIVATE_KEY: ${{ secrets.GPG_KEY }}
+         PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
         with:
             bundle: lipl-control-x64.flatpak
             manifest-path: nl.paulmin.lipl.Control.yml
             cache-key: flatpak-builder-${{ github.sha }}
+            gpg-sign: info@paulmin.nl
       - name: Calculate checksum
         run: sha256sum lipl-control-x64.flatpak > lipl-control-x64.flatpak.sig.txt
       - uses: ncipollo/release-action@v1
