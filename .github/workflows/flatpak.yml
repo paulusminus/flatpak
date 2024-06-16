@@ -1,0 +1,24 @@
+name: Release flatpak
+
+on:
+  push:
+    tags: "v*.*.*"
+
+jobs:
+  flatpak:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:freedesktop-23.08
+      options: --privileged
+    steps:
+      - uses: actions/checkout@v4
+      - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
+        with:
+            bundle: lipl-control.flatpak
+            manifest-path: nl.paulmin.lipl.Control.yml
+            cache-key: flatpak-builder-${{ github.sha }}
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "lipl-control.flatpak"

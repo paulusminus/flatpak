@@ -1,4 +1,4 @@
-id: nl.paulmin.LiplControl
+id: nl.paulmin.lipl.Control
 runtime: org.freedesktop.Platform
 runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
@@ -13,15 +13,15 @@ modules:
       - mkdir -p /app/bin/
       - mkdir -p /app/lib/
       - ln -s /app/lipl_control/lipl_control /app/bin/lipl_control
-      - install -Dm644 release/nl.paulmin.LiplControl.svg /app/share/icons/hicolor/scalable/apps/nl.paulmin.LiplControl.svg
-      - install -Dm644 release/nl.paulmin.LiplControl.desktop /app/share/applications/nl.paulmin.LiplControl.desktop
-      - install -Dm644 release/nl.paulmin.LiplControl.metainfo.xml /app/share/metainfo/nl.paulmin.LiplControl.metainfo.xml
+      - install -Dm644 release/nl.paulmin.lipl.Control.svg /app/share/icons/hicolor/scalable/apps/nl.paulmin.lipl.Control.svg
+      - install -Dm644 release/nl.paulmin.lipl.Control.desktop /app/share/applications/nl.paulmin.lipl.Control.desktop
+      - install -Dm644 release/nl.paulmin.lipl.Control.metainfo.xml /app/share/metainfo/nl.paulmin.lipl.Control.metainfo.xml
     sources:
       - type: archive
         only-arches: 
           - x86_64
-        url: https://github.com/paulusminus/lipl-control/releases/download/v1.12.7/lipl-linux-x64.tar.gz
-        sha256: eeea1e62b71d3be6b34fcc7db9d213c5826a2c719659e63decdb397c0abb916b
+        url: https://github.com/paulusminus/lipl-control/releases/download/v1.12.8/lipl-linux-x64.tar.gz
+        sha256: da0714db461d6008d08db6540c9e52726a7e27896dd8a6b96cafb2c1bcba6206
         dest: release
 finish-args:
   - --share=ipc
