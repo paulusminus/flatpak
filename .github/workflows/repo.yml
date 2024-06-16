@@ -35,5 +35,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
           folder: ${{ steps.flatpak.outputs.repository }}
-          target-folder: repo
 
