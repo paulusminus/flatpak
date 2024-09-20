@@ -21,8 +21,8 @@ modules:
       - type: archive
         only-arches: 
           - x86_64
-        url: https://github.com/paulusminus/lipl-control/releases/download/v1.12.8/lipl-linux-x64.tar.gz
-        sha256: da0714db461d6008d08db6540c9e52726a7e27896dd8a6b96cafb2c1bcba6206
+        url: https://github.com/paulusminus/lipl-control/releases/download/v1.13.2/lipl-linux-x64.tar.gz
+        sha256: a750d9e812c6817ca31526cad241928fba9567effb4814b3b9ab84286744ea54
         dest: release
 finish-args:
   - --share=ipc
